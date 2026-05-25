@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selamat Ulang Tahun Michael Sayang ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#ff758c,#ff7eb3,#a18cd1);
+    min-height:100vh;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
+
+.container{
+    padding:20px;
+}
+
+.hidden{
+    display:none;
+}
+
+h1{
+    margin-top:100px;
+    font-size:3rem;
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:18px;
+    margin-top:20px;
+    background:white;
+    color:#ff4d88;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+#message{
+    max-width:800px;
+    margin:30px auto;
+    line-height:1.8;
+    font-size:20px;
+    padding:20px;
+}
+
+.heart{
+    position:fixed;
+    top:-20px;
+    color:red;
+    animation:fall 5s linear infinite;
+}
+
+@keyframes fall{
+    to{
+        transform:translateY(110vh);
+    }
+}
+
+.cake{
+    font-size:120px;
+    margin-top:30px;
+}
+
+#wish{
+    margin-top:20px;
+    font-size:24px;
+    font-weight:bold;
+}
+
+footer{
+    margin-top:40px;
+    font-size:24px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+    <div id="opening">
+        <h1>🎉 Selamat Ulang Tahun Michael Vian Gwal Gwal ❤️</h1>
+
+        <button onclick="startSurprise()">
+            Buka Kejutan
+        </button>
+    </div>
+
+    <div id="content" class="hidden">
+
+        <h1>Happy Birthday Sayangku ❤️</h1>
+
+        <div id="message"></div>
+
+        <audio id="music" controls>
+            <source src="romantis.mp3" type="audio/mpeg">
+        </audio>
+
+        <div id="cake" class="cake">
+            🎂🕯️
+        </div>
+
+        <button onclick="blowCandle()">
+            Tiup Lilin
+        </button>
+
+        <div id="wish"></div>
+
+        <footer>
+            ❤️ Aku mencintaimu hari ini, esok, dan selamanya ❤️
+        </footer>
+
+    </div>
+
+</div>
+
+<script>
+
+const text =
+"Selamat ulang tahun Michael Gwal Gwal.Makasih banyak su jadi bagian paling indah dalam beta peng hidup. Semoga semua yang di impiakan tercapai,selalu sehat dan bahagia selalu. Beta bersyukur bisa kenal ko walaupun hanya sebentar dan tidak bisa selamanya tapi senang bisa mengenal ko. semoga hari spesial ini dipenuhi tawa,cinta dan semua hal indah yang ko impikan.  ❤️";
+
+function startSurprise(){
+
+    document.getElementById("opening").style.display="none";
+    document.getElementById("content").classList.remove("hidden");
+
+    document.getElementById("music").play();
+
+    createHearts();
+    typeMessage();
+}
+
+function typeMessage(){
+
+    let i = 0;
+    const target = document.getElementById("message");
+
+    let interval = setInterval(() => {
+
+        target.innerHTML += text.charAt(i);
+        i++;
+
+        if(i >= text.length){
+            clearInterval(interval);
+        }
+
+    }, 40);
+}
+
+function createHearts(){
+
+    setInterval(() => {
+
+        let heart = document.createElement("div");
+
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (20 + Math.random()*20) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+
+    }, 250);
+}
+
+function blowCandle(){
+
+    document.getElementById("cake").innerHTML = "🎂";
+
+    document.getElementById("wish").innerHTML =
+    "✨ Semoga semua harapan dan impianmu menjadi kenyataan. Selamat ulang tahun sayang! ✨";
+}
+
+</script>
+
+</body>
+</html>
